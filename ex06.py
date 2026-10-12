@@ -8,7 +8,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.success("왼쪽 영역")
 with col2:
-    st.write("오른쪽 영역")
+    st.success("오른쪽 영역")
 
 # 새로고침 시 데이터 유지
 if "user_list" not in st.session_state:
@@ -33,4 +33,3 @@ for task in tasks:
     with st.container(border=True):
 
         st.write(task)
-

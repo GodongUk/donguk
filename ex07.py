@@ -22,7 +22,6 @@ if st.button("인사하기"):
     if name:
 
         st.success(f"안녕하세요, {name}님!")
-
     else:
 
         st.warning("이름을 입력해주세요.")

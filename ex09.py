@@ -40,3 +40,16 @@ with col2:
     for day in day2:
         with st.container(border=True):
             st.write(day)
+col3, col4 = st.columns(2)
+with col3:
+    st.subheader("오늘 야구 일정")
+with col4:
+    st.subheader("시작시간 18시 30분")
+kbo = [
+    "LG vs KIA",
+    "롯데 vs 두산 ",
+    "KT vs 삼성"
+]
+for kbos in kbo:
+    with st.container(border=True):
+        st.write(kbos)

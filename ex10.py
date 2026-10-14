@@ -8,7 +8,7 @@ if not firebase_admin._apps:
     key_string = st.secrets["firebase_key"]
     cred_dict = json.loads(key_string)
     cred = credentials.Certificate(cred_dict)
-
+    firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 st.title("고동욱 메모장.")

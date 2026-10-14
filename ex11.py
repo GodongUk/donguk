@@ -55,7 +55,7 @@ for doc in docs:
                     st.write("이미 있는 아이디입니다.")
                 else:
                     db.collection("users").document(n_id).set({"password": n_pw})
-                    st.success("회원가입 완료!")
+                    st.success("회원가입 완료!"); st.rerun()
         with tab3:
             c_id = st.text_input("기존 아이디", key="c_id")
             c_pw = st.text_input("기존 비밀번호", type="password", key="c_pw")

@@ -57,14 +57,14 @@ for doc in docs:
                     db.collection("users").document(n_id).set({"password": n_pw})
                     st.success("회원가입 완료!")
         with tab3:
-            l_id = st.text_input("아이디", key="l_id")
-            l_pw = st.text_input("비번", type="password", key="l_pw")
+            c_id = st.text_input("아이디", key="c_id")
+            c_pw = st.text_input("비번", type="password", key="c_pw")
             u_pw = st.text_input("새로운 비번", type="password", key="u_pw")
             if st.button("수정하기"):
-                u = db.collection("users").document(l_id).get()
+                u = db.collection("users").document(c_id).get()
 
-                if u.exists and u.to_dict()["password"] == l_pw:
-                    db.collection("users").document(l_id).update({
+                if u.exists and u.to_dict()["password"] == c_pw:
+                    db.collection("users").document(c_id).update({
                         "password" : u_pw
                     })
                     st.success("비번 변경 완료")

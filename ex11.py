@@ -55,5 +55,5 @@ for doc in docs:
                     st.write("이미 있는 아이디입니다.")
                 else:
                     db.collection("users").document(n_id).set({"password": n_pw})
-                st.success("회원가입 완료!")
+                    st.success("회원가입 완료!")
             

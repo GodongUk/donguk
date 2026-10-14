@@ -44,6 +44,8 @@ for doc in docs:
                 u = db.collection("users").document(l_id).get()
                 if u.exists and u.to_dict()["password"] == l_pw:
                     st.session_state["login"] = True; st.rerun()
+                else:
+                    st.write("틀림")
         with tab2:
             n_id = st.text_input("새 아이디", key="n_id")
             n_pw = st.text_input("새 비번", type="password", key="n_pw")

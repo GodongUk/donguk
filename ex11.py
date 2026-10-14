@@ -72,7 +72,7 @@ for doc in docs:
                     st.write("입력하신 비밀번호가 틀렸습니다.")
         with tab4:
             d_id = st.text_input("아이디", key="d_id")
-            d_pw = st.text_input("비밀번호", key="d_pw")
+            d_pw = st.text_input("비밀번호", type="password", key="d_pw")
             if st.button("탈퇴하기"):
                 u = db.collection("users").document(d_id).get()
                 if u.exists and u.to_dict()["password"] == d_pw:

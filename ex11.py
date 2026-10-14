@@ -46,7 +46,7 @@ for doc in docs:
                     st.session_state["login"] = True; st.rerun()
         with tab2:
             n_id = st.text_input("새 아이디", key="n_id")
-            n_pw = st.text_input("새 비번", type="password", key="npw")
+            n_pw = st.text_input("새 비번", type="password", key="n_pw")
             if st.button("가입하기"):
                 db.collection("users").document(n_id).set({"password": n_pw})
                 st.success("회원가입 완료!")

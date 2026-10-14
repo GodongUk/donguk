@@ -36,7 +36,7 @@ for doc in docs:
         st.title("나만의 다이어리")
         if st.button("로그아웃"): st.session_state["login"] = False; st.rerun()
     else:
-        tab1, tab2, tab3 = st.tabs(["로그인", "회원가입", "비밀번호 수정"])
+        tab1, tab2, tab3, tab4 = st.tabs(["로그인", "회원가입", "비밀번호 수정", "회원탈퇴"])
         with tab1:
             l_id = st.text_input("아이디", key="l_id")
             l_pw = st.text_input("비번", type="password", key="l_pw")
@@ -70,4 +70,13 @@ for doc in docs:
                     st.success("비밀번호 변경 완료")
                 else:
                     st.write("입력하신 비밀번호가 틀렸습니다.")
-                
+        with tab4:
+            d_id = st.text_input("아이디", key="d_id")
+            d_pw = st.text_input("비밀번호", key="d_pw")
+            if st.button("탈퇴하기"):
+                u = db.collection("users").document(d_id).get()
+                if u.exists and u.to_dict()["password"] == d_pw:
+                    db.collection("users").document(d_id).delete
+                    st.success("회원탈퇴 완료")
+                else:
+                    st.write("뭔가 틀림")

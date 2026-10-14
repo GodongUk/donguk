@@ -77,6 +77,7 @@ for doc in docs:
                 u = db.collection("users").document(d_id).get()
                 if u.exists and u.to_dict()["password"] == d_pw:
                     db.collection("users").document(d_id).delete
+                    db.collection("users").document(d_pw).delete
                     st.success("회원탈퇴 완료")
                 else:
                     st.write("뭔가 틀림")

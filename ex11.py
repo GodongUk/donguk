@@ -45,11 +45,15 @@ for doc in docs:
                 if u.exists and u.to_dict()["password"] == l_pw:
                     st.session_state["login"] = True; st.rerun()
                 else:
-                    st.write("틀림")
+                    st.write("입력하신 비밀번호가 다릅니다.")
         with tab2:
             n_id = st.text_input("새 아이디", key="n_id")
             n_pw = st.text_input("새 비번", type="password", key="n_pw")
             if st.button("가입하기"):
-                db.collection("users").document(n_id).set({"password": n_pw})
+                u = db.collection("users").document(n_id).get()
+                if u.exists:
+                    st.write("이미 있는 아이디입니다.")
+                else:
+                    db.collection("users").document(n_id).set({"password": n_pw})
                 st.success("회원가입 완료!")
             

@@ -36,7 +36,7 @@ for doc in docs:
         st.title("나만의 다이어리")
         if st.button("로그아웃"): st.session_state["login"] = False; st.rerun()
     else:
-        tab1, tab2 = st.tabs(["로그인", "회원가입"])
+        tab1, tab2, tab3 = st.tabs(["로그인", "회원가입", "비밀번호 수정"])
         with tab1:
             l_id = st.text_input("아이디", key="l_id")
             l_pw = st.text_input("비번", type="password", key="l_pw")
@@ -56,4 +56,18 @@ for doc in docs:
                 else:
                     db.collection("users").document(n_id).set({"password": n_pw})
                     st.success("회원가입 완료!")
-            
+        with tab3:
+            l_id = st.text_input("아이디", key="l_id")
+            l_pw = st.text_input("비번", type="password", key="l_pw")
+            u_pw = st.text_input("새로운 비번", type="password", key="u_pw")
+            if st.button("수정하기"):
+                u = db.collection("users").document(l_id).get()
+
+                if u.exists and u.to_dict()["password"] == l_pw:
+                    db.collection("users").document(l_id).update({
+                        "password" : u_pw
+                    })
+                    st.success("비번 변경 완료")
+                else:
+                    st.write("비번틀림")
+                

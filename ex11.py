@@ -57,9 +57,9 @@ for doc in docs:
                     db.collection("users").document(n_id).set({"password": n_pw})
                     st.success("회원가입 완료!")
         with tab3:
-            c_id = st.text_input("아이디", key="c_id")
-            c_pw = st.text_input("비번", type="password", key="c_pw")
-            u_pw = st.text_input("새로운 비번", type="password", key="u_pw")
+            c_id = st.text_input("기존 아이디", key="c_id")
+            c_pw = st.text_input("기존 비밀번호", type="password", key="c_pw")
+            u_pw = st.text_input("새로운 비밀번호", type="password", key="u_pw")
             if st.button("수정하기"):
                 u = db.collection("users").document(c_id).get()
 
@@ -67,7 +67,7 @@ for doc in docs:
                     db.collection("users").document(c_id).update({
                         "password" : u_pw
                     })
-                    st.success("비번 변경 완료")
+                    st.success("비밀번호 변경 완료")
                 else:
-                    st.write("비번틀림")
+                    st.write("입력하신 비밀번호가 틀렸습니다.")
                 
